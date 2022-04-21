@@ -1,11 +1,16 @@
 package com.example.facebookloginapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +27,23 @@ public class MainActivity extends AppCompatActivity {
         profile = findViewById(R.id.profile);
         login = findViewById(R.id.login);
 
+        CallbackManager callbackManager = CallbackManager.Factory.create();
 
+        login.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                info.setText("User Id : " + loginResult.getAccessToken().getUserId());
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(@NonNull FacebookException e) {
+
+            }
+        });
     }
 }
