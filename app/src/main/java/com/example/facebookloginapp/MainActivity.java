@@ -17,5 +17,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        info = findViewById(R.id.info);
+        profile = findViewById(R.id.profile);
+        login = findViewById(R.id.login);
+
+
     }
 }
